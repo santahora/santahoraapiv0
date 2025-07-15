@@ -9,6 +9,28 @@ def read_root():
 
 
 
+dados_missas = {
+    1: {'Paróquia': 'CATEDRAL - PARÓQUIA SAGRADO CORAÇÃO DE JESUS', 'Arquidiocese': 'Londrina', 'Decanato': 'Centro', 'Cidade': 'Londrina', 'Dia': 'Segunda', 'Horário': '07h00', 'Observação': nan},
+    2: {'Paróquia': 'CATEDRAL - PARÓQUIA SAGRADO CORAÇÃO DE JESUS', 'Arquidiocese': 'Londrina', 'Decanato': 'Centro', 'Cidade': 'Londrina', 'Dia': 'Segunda', 'Horário': '12h00', 'Observação': nan},
+    3: {'Paróquia': 'CATEDRAL - PARÓQUIA SAGRADO CORAÇÃO DE JESUS', 'Arquidiocese': 'Londrina', 'Decanato': 'Centro', 'Cidade': 'Londrina', 'Dia': 'Terça', 'Horário': '07h00', 'Observação': nan},
+    4: {'Paróquia': 'CATEDRAL - PARÓQUIA SAGRADO CORAÇÃO DE JESUS', 'Arquidiocese': 'Londrina', 'Decanato': 'Centro', 'Cidade': 'Londrina', 'Dia': 'Terça', 'Horário': '12h00', 'Observação': nan},
+    5: {'Paróquia': 'CATEDRAL - PARÓQUIA SAGRADO CORAÇÃO DE JESUS', 'Arquidiocese': 'Londrina', 'Decanato': 'Centro', 'Cidade': 'Londrina', 'Dia': 'Quarta', 'Horário': '07h00', 'Observação': nan},
+}
+
+
+# Rota dinâmica (GET)
+@app.get("/paroquias")
+def lista_paroquias():
+    dic_lista_paroquias = {'lista_paroquias': list(dados_missas['Paróquia'].unique())}
+    return dic_lista_paroquias
+
+
+
+
+
+
+
+
 # ####
 # from fastapi import FastAPI
 # from fastapi.middleware.cors import CORSMiddleware
@@ -29,23 +51,6 @@ def read_root():
 #    allow_headers=["*"],  # Permitir todos os cabeçalhos
 #)
 
-DATA_URL = 'https://raw.githubusercontent.com/santahora/santahora/main/horarios_missas_id_2.csv'
-
-try:
-    df = pd.read_csv(DATA_URL)
-    # Aqui você pode fazer algum pré-processamento se quiser:
-    df['Dia'] = df['Dia'].str.capitalize()
-except Exception as e:
-    df = pd.DataFrame()  # fallback se der erro
-
-
-@app.get("/missas")
-def get_missas():
-    if df.empty:
-        return JSONResponse(content={"error": "Dados não carregados"}, status_code=500)
-
-    # Exemplo: devolver os dados em JSON
-    return df.to_dict(orient="records")
 
 
     

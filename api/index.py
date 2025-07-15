@@ -29,7 +29,26 @@ app.add_middleware(
     allow_headers=["*"],  # Permitir todos os cabeçalhos
 )
 
+DATA_URL = 'https://raw.githubusercontent.com/santahora/santahora/main/horarios_missas_id_2.csv'
 
+try:
+    df = pd.read_csv(DATA_URL)
+    # Aqui você pode fazer algum pré-processamento se quiser:
+    df['Dia'] = df['Dia'].str.capitalize()
+except Exception as e:
+    df = pd.DataFrame()  # fallback se der erro
+
+
+@app.get("/missas")
+def get_missas():
+    if df.empty:
+        return JSONResponse(content={"error": "Dados não carregados"}, status_code=500)
+
+    # Exemplo: devolver os dados em JSON
+    return df.to_dict(orient="records")
+
+
+    
 # def load_data(url):
 #     df = pd.read_csv(url)
 #     return df

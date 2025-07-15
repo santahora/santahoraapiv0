@@ -11,11 +11,6 @@ def read_root():
 # adaptador para Vercel
 # handler = Mangum(app)
 
-def load_data(url):
-    df = pd.read_csv(url)
-    return df
-
-
 # Rota dinâmica (GET)
 @app.get("/paroquias")
 def lista_paroquias():

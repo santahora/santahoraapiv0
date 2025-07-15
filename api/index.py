@@ -20,7 +20,7 @@ dados_missas_dic = {
 
 # Rota dinâmica (GET)
 @app.get("/paroquias")
-def lista_paroquias():
+def lista_paroquias(dados_missas_dic):
     return dados_missas_dic
 
 

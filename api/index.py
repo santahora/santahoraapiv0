@@ -21,7 +21,7 @@ df = load_data('https://raw.githubusercontent.com/santahora/santahora/main/horar
 @app.get("/paroquias")
 def lista_paroquias():
     dic_lista_paroquias = {'lista_paroquias': list(df['Paróquia'].unique())}
-    return dic_lista_paroquias
+    return SONResponse(content=dic_lista_paroquias)
 
 
 # ####

@@ -21,7 +21,7 @@ def load_data(url):
 def lista_paroquias():
     df = pd.read_csv('horarios_missas_id_2.csv')
     dic_lista_paroquias = {'lista_paroquias': list(df['Paróquia'].unique())}
-    return dic_lista_paroquias
+    return JSONResponse(content=dic_lista_paroquias) 
 
 # ####
 # from fastapi import FastAPI

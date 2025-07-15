@@ -8,18 +8,8 @@ app = FastAPI()
 def read_root():
     return JSONResponse(content={"message": "API está online!"})
 
-# adaptador para Vercel
-# handler = Mangum(app)
 
-# Rota dinâmica (GET)
-@app.get("/paroquias")
-def lista_paroquias():
-    aqui = 1
-    df = dados_missas
-    aqui = 2
-    dic_lista_paroquias = {'lista_paroquias': list(df['Paróquia'].unique())}
-    aqui = 3
-    return JSONResponse(content={"message": aqui})
+
 
 # ####
 # from fastapi import FastAPI

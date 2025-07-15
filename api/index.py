@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from dados_missas import dados_missas
+from api.dados_missas import dados_missas
 
 app = FastAPI()
 

@@ -1,13 +1,11 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from api.dados_missas import dados_missas
 
 app = FastAPI()
 
 @app.get("/")
 def read_root():
     return JSONResponse(content={"message": "API está online!"})
-
 
 
 

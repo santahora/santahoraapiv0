@@ -11,8 +11,17 @@ def read_root():
 # adaptador para Vercel
 # handler = Mangum(app)
 
+def load_data(url):
+    df = pd.read_csv(url)
+    return df
 
+df = load_data('https://raw.githubusercontent.com/santahora/santahora/main/horarios_missas_id_2.csv')
 
+# Rota dinâmica (GET)
+@app.get("/paroquias")
+def lista_paroquias():
+    dic_lista_paroquias = {'lista_paroquias': list(df['Paróquia'].unique())}
+    return dic_lista_paroquias
 
 
 # ####

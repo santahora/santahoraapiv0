@@ -21,13 +21,13 @@ def read_root():
 
 
 # Configurar CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Permitir todas as origens
-    allow_credentials=True,
-    allow_methods=["*"],  # Permitir todos os métodos (GET, POST, etc.)
-    allow_headers=["*"],  # Permitir todos os cabeçalhos
-)
+#app.add_middleware(
+#    CORSMiddleware,
+#    allow_origins=["*"],  # Permitir todas as origens
+#    allow_credentials=True,
+#    allow_methods=["*"],  # Permitir todos os métodos (GET, POST, etc.)
+#    allow_headers=["*"],  # Permitir todos os cabeçalhos
+#)
 
 DATA_URL = 'https://raw.githubusercontent.com/santahora/santahora/main/horarios_missas_id_2.csv'
 

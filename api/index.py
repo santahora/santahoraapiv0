@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
-from mangum import Mangum  # adaptador para serverless
-importo os
+from dados_missas import dados_missas
+
 app = FastAPI()
 
 @app.get("/")
@@ -16,14 +16,15 @@ def load_data(url):
     return df
 
 
+# Rota dinâmica (GET)
 @app.get("/paroquias")
 def lista_paroquias():
-    if not os.path.exists('horarios_missas_id_2.csv'):
-        return {"erro": "Arquivo CSV não encontrado."}
-
-    df = pd.read_csv('horarios_missas_id_2.csv')
+    aqui = 1
+    df = dados_missas
+    aqui = 2
     dic_lista_paroquias = {'lista_paroquias': list(df['Paróquia'].unique())}
-    return dic_lista_paroquias
+    aqui = 3
+    return JSONResponse(content={"message": aqui})
 
 # ####
 # from fastapi import FastAPI

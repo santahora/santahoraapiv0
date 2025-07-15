@@ -19,9 +19,12 @@ def load_data(url):
 # Rota dinâmica (GET)
 @app.get("/paroquias")
 def lista_paroquias():
-    #df = pd.read_csv('horarios_missas_id_2.csv')
-    #dic_lista_paroquias = {'lista_paroquias': list(df['Paróquia'].unique())}
-    return JSONResponse(content={"message": "foii"})
+    aqui = 1
+    df = pd.read_csv('horarios_missas_id_2.csv')
+    aqui = 2
+    dic_lista_paroquias = {'lista_paroquias': list(df['Paróquia'].unique())}
+    aqui = 3
+    return JSONResponse(content={"message": aqui})
 
 # ####
 # from fastapi import FastAPI
